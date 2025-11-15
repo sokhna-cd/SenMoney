@@ -1,35 +1,31 @@
-
-// Tableaux obligatoires
-var tabNumeros = ["772346889", "772781047", "775878453", "771020340", "771045435"];
-var tabSoldes  = [1000, 1500, 2000, 2500, 3000];
-var tabCodes   = [1234, 2345, 2376, 4321, 9876];
+var tabNumeros = [
+  "772346889",
+  "772781047",
+  "775878453",
+  "771020340",
+  "771045435",
+];
+var tabSoldes = [1000, 1500, 2000, 2500, 3000];
+var tabCodes = [1234, 2345, 2376, 4321, 9876];
 
 var nbreNum = tabNumeros.length;
 var numCourant;
-
-// Variable supplémentaire demandée par l’énoncé
 let soldeCompte = 10000;
-
-// Stockage des textes multilingues
 let textes = {};
-
-
-
 
 function chargerLangue(codeLangue) {
   let fichier = "donnees_" + codeLangue + ".txt";
-
   $.ajax({
     url: fichier,
     type: "GET",
     dataType: "text",
-    success: function(data) {
+    success: function (data) {
       parseDonnees(data);
       majTextesPage();
     },
-    error: function() {
+    error: function () {
       alert("Impossible de charger : " + fichier);
-    }
+    },
   });
 }
 
@@ -37,7 +33,7 @@ function parseDonnees(texte) {
   textes = {};
   let lignes = texte.split("\n");
 
-  lignes.forEach(function(l) {
+  lignes.forEach(function (l) {
     l = $.trim(l);
     if (l === "" || l.startsWith("#")) return;
 
@@ -49,35 +45,24 @@ function parseDonnees(texte) {
 }
 
 function majTextesPage() {
-  if (textes["titreAppli"])  $("#titreAppli").text(textes["titreAppli"]);
-  if (textes["sousTitre"])   $("#sousTitre").text(textes["sousTitre"]);
-  if (textes["btnMenu"])     $("#btnMenu").text(textes["btnMenu"]);
-   if (textes["lang-block"])  $("#lblLang").text(textes["lang-block"]);
-  if (textes["formNum"])     $("#lblNum").text(textes["formNum"]);
+  if (textes["titreAppli"]) $("#titreAppli").text(textes["titreAppli"]);
+  if (textes["sousTitre"]) $("#sousTitre").text(textes["sousTitre"]);
+  if (textes["btnMenu"]) $("#btnMenu").text(textes["btnMenu"]);
 }
 
-$(document).ready(function() {
-  // Langue par défaut
+$(document).ready(function () {
   chargerLangue("fr");
-
-  $("#langue").on("change", function() {
+  $("#langue").on("change", function () {
     chargerLangue($(this).val());
   });
 });
 
-
-
-
 function etapeSuivant() {
-  // message genre "Voulez-vous retourner au menu ?"
   let msgRetour = textes["msgRetourMenu"] || "Voulez-vous retourner au menu ?";
   let rep = confirm(msgRetour);
 
   if (rep) {
     main();
-  } else {
-    let msgFin = textes["msgProgrammeTermine"] || "Au Revoir.";
-    alert(msgFin);
   }
 }
 
@@ -89,59 +74,67 @@ function menu() {
   }
 
   let m =
-    (textes["menuTitre"]  || "------ MENU SENMONEY ------") + "\n" +
-    "------ " + numCourant + " ------\n\n" +
-    ( textes ["menuLigne0"]|| "Taper le numero du service choisi") + "\n"+
-    (textes["menuLigne1"] || "1. Afficher le solde") + "\n" +
-    (textes["menuLigne2"] || "2. Transfert d'argent") + "\n" +
-    (textes["menuLigne3"] || "3. Paiement de Facture") + "\n" +
-    (textes["menuLigne4"] || "4.Options") + "\n\n" ;
-    
+    (textes["menuTitre"] || "------ MENU SENMONEY ------") +
+    "\n" +
+    "------ " +
+    numCourant +
+    " ------\n\n" +
+    (textes["menuLigne0"] || "Taper le numero du service choisi") +
+    "\n" +
+    (textes["menuLigne1"] || "1. Afficher le solde") +
+    "\n" +
+    (textes["menuLigne2"] || "2. Transfert d'argent") +
+    "\n" +
+    (textes["menuLigne3"] || "3. Paiement de Facture") +
+    "\n" +
+    (textes["menuLigne4"] || "4.Options") +
+    "\n\n";
 
   let choix = prompt(m);
-  switch (choix) {
-  case "1":
-    
-    afficherSolde();
-    break;
-  case "2":
-    
-    transfertArgent();
-    break;
-  case "3":
-    
-    paiementFacture();
-    break;
-  case "4":
-    
-    optionsSenMoney ? optionsSenMoney() : alert("Options non implémentées");
-    break;
-    
-  default:
-    alert("Choix invalide.");
-    etapeSuivant();
-}
 
-  if (choix === null) return null;
+  if (choix === null) {
+    return null;
+  }
+
+  switch (choix) {
+    case "1":
+      afficherSolde();
+      break;
+    case "2":
+      transfertArgent();
+      break;
+    case "3":
+      paiementFacture();
+      break;
+    case "4":
+      alert("Options non implémentées");
+      let retour = confirm("Voulez-vous retourner au menu ?");
+      if (!retour) {
+        return null;
+      }
+      return menu();
+    default:
+      alert("Choix invalide.");
+      etapeSuivant();
+  }
 
   return parseInt(choix);
 }
 
 function main() {
+  numCourant = document.getElementById("num").value;
 
-   numCourant = document.getElementById("num").value;
-    if (!numCourant) {
-        alert("Veuillez sélectionner un numéro !");
-        return;
-    }
-let rep = menu();
-if (rep === "1") {
-        afficherSolde();
-    }
- etapeSuivant();
+  if (!numCourant) {
+    alert("Veuillez sélectionner un numéro !");
+    return;
+  }
+
+  let rep = menu();
+
+  if (rep === null) return;
+
+  etapeSuivant();
 }
-
-
 
 function afficherSolde() {
   let indice = tabNumeros.indexOf(numCourant);
@@ -165,16 +158,13 @@ function afficherSolde() {
     let solde = tabSoldes[indice];
 
     let phraseSolde = textes["msgSolde"] || "Votre solde est :";
-    let phraseRetour = textes["msgRetourMenu"] || "Voulez-vous retourner au menu ?";
+    let phraseRetour =
+      textes["msgRetourMenu"] || "Voulez-vous retourner au menu ?";
 
-    let msgSolde =
-      phraseSolde + " " + solde + " FCFA\n" +
-      phraseRetour;
+    let msgSolde = phraseSolde + " " + solde + " FCFA\n" + phraseRetour;
 
     alert(msgSolde);
-}
-
-else {
+  } else {
     let msgErrCode = textes["errCodeIncorrect"] || "Code incorrect !";
     alert(msgErrCode);
   }
@@ -189,7 +179,6 @@ function transfertArgent() {
     return;
   }
 
- 
   let msgNumRecep = textes["msgNumRecep"] || "Entrez le numéro bénéficiaire :";
   let recepteur = prompt(msgNumRecep);
 
@@ -207,7 +196,6 @@ function transfertArgent() {
 
   let rec = tabNumeros.indexOf(recepteur);
 
-  
   let msgMontant = textes["msgMontant"] || "Montant à transférer :";
   let montantStr = prompt(msgMontant);
 
@@ -232,7 +220,6 @@ function transfertArgent() {
     return;
   }
 
-  
   let msgCode = textes["msgcodesecurite"] || "Entrez votre code de sécurité :";
   let code = prompt(msgCode);
 
@@ -248,16 +235,14 @@ function transfertArgent() {
     return;
   }
 
-
-  tabSoldes[exp] -= (montant + frais);
+  tabSoldes[exp] -= montant + frais;
   tabSoldes[rec] += montant;
 
-  let msgOK = textes["msgTransfertReussi"] || "Transfert réussi !";
+  let msgOK = textes["msgTransfertReusi"] || "Transfert réussi !";
   alert(msgOK);
 }
-function paiementFacture() {
 
-  
+function paiementFacture() {
   if (!numCourant) {
     alert("Aucun numéro sélectionné !");
     return;
@@ -269,22 +254,24 @@ function paiementFacture() {
     return;
   }
 
- 
   let msgChoixFacture =
-  (textes["msgTitrePaiementFacture"] || "------ PAIEMENT FACTURE ------") + "\n" +
-  (textes["msgFacture1"] || "1 - Facture d'électricité") + "\n" +
-  (textes["msgFacture2"] || "2 - Facture d'eau") + "\n" +
-  (textes["msgFacture3"] || "3 - Facture internet") + "\n\n" +
-  (textes["msgInviteChoixFacture"] || "Taper le numéro du service :");
+    (textes["msgTitrePaiementFacture"] || "------ PAIEMENT FACTURE ------") +
+    "\n" +
+    (textes["msgFacture1"] || "1 - Facture d'électricité") +
+    "\n" +
+    (textes["msgFacture2"] || "2 - Facture d'eau") +
+    "\n" +
+    (textes["msgFacture3"] || "3 - Facture internet") +
+    "\n\n" +
+    (textes["msgInviteChoixFacture"] || "Taper le numéro du service :");
 
-let choix = prompt(msgChoixFacture);
+  let choix = prompt(msgChoixFacture);
 
   if (!choix) {
     alert(textes["msgOpAnnulee"] || "Opération annulée.");
     return;
   }
 
-  
   let typeFacture = "";
   switch (choix) {
     case "1":
@@ -301,62 +288,71 @@ let choix = prompt(msgChoixFacture);
       return;
   }
 
-
-  let msgRefFacture = textes["msgRefFacture"] || "Entrez la référence de la facture :";
+  let msgRefFacture =
+    textes["msgRefFacture"] || "Entrez la référence de la facture :";
   let refFacture = prompt(msgRefFacture);
   if (!refFacture) {
     alert(textes["msgOpAnnulee"] || "Opération annulée.");
     return;
   }
 
-
-  let msgMontantFacture = textes["msgMontantFacture"] || "Entrez le montant de la facture :";
+  let msgMontantFacture =
+    textes["msgMontantFacture"] || "Entrez le montant de la facture :";
   let montant = parseInt(prompt(msgMontantFacture), 10);
   if (isNaN(montant) || montant <= 0) {
-    alert(textes["msgMontantInvalide"] || "Montant invalide. Opération annulée.");
+    alert(
+      textes["msgMontantInvalide"] || "Montant invalide. Opération annulée."
+    );
     return;
   }
 
- 
-  let msgCodeSecret = textes["msgCodeSecret"] || "Entrez votre code secret SenMoney :";
+  let msgCodeSecret =
+    textes["msgCodeSecret"] || "Entrez votre code secret SenMoney :";
   let codeSaisi = parseInt(prompt(msgCodeSecret), 10);
   if (isNaN(codeSaisi)) {
     alert(textes["msgCodeInvalide"] || "Code invalide. Opération annulée.");
     return;
   }
 
- 
   if (tabCodes[iSource] !== codeSaisi) {
     alert(textes["msgCodeIncorrect"] || "Code secret incorrect !");
     return;
   }
 
-  
   if (tabSoldes[iSource] < montant) {
-    alert(textes["msgSoldeInsuffisant"] || "Solde insuffisant pour payer cette facture !");
+    alert(
+      textes["msgSoldeInsuffisant"] ||
+        "Solde insuffisant pour payer cette facture !"
+    );
     return;
   }
 
- 
   tabSoldes[iSource] -= montant;
 
-  
-  let msgPaiementOK = textes["msgPaiementOK"] || "Paiement effectué avec succès !";
+  let msgPaiementOK =
+    textes["msgPaiementOK"] || "Paiement effectué avec succès !";
   let msgNouveauSolde = textes["msgNouveauSolde"] || "Nouveau solde :";
 
   alert(
-    msgPaiementOK + "\n\n" +
-    typeFacture + " (" + refFacture + ")\n" +
-    "Montant : " + montant + " F\n\n" +
-    msgNouveauSolde + " " + tabSoldes[iSource] + " F"
+    msgPaiementOK +
+      "\n\n" +
+      typeFacture +
+      " (" +
+      refFacture +
+      ")\n" +
+      "Montant : " +
+      montant +
+      " F\n\n" +
+      msgNouveauSolde +
+      " " +
+      tabSoldes[iSource] +
+      " F"
   );
 
-  
-  let msgRetourMenu = textes["msgRetourMenu"] || "Voulez-vous retourner au menu principal ?";
+  let msgRetourMenu =
+    textes["msgRetourMenu"] || "Voulez-vous retourner au menu principal ?";
   let rep = confirm(msgRetourMenu);
   if (rep) {
     if (typeof main === "function") main();
-  } else {
-    alert(textes["msgAuRevoir"] || "Au revoir !");
   }
 }
