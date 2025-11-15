@@ -1,0 +1,48 @@
+# --- Textes en Français ---
+
+titreAppli=Application SenMoney
+sousTitre=Choisissez un numéro puis appuyez sur le bouton pour lancer SenMoney.
+btnMenu=#221#
+
+menuTitre=------ MENU SENMONEY ------
+menuLigne0= Taper le numero du service choisi
+menuLigne1=1. Afficher le solde
+menuLigne2=2. Transfert d'argent
+menuLigne3=3. Paiement de facture
+menuLigne4=4. Options
+menuInvite=Veuillez entrer le numéro du service choisi :
+
+msgcodesecurite=Veuillez entrer votre code de sécurité :
+msgSolde =Le solde de votre compte est :   
+msgRetourMenu=Voulez-vous retourner au menu ?
+
+errNumIntrouvable=Numéro introuvable !
+errNumInvalide=Numéro invalide !
+errCodeIncorrect=Code incorrect !
+errMontantInvalide=Montant invalide !
+errSoldeInsuffisant=Solde insuffisant !
+errOperationAnnulee=Opération annulée.
+
+msgTransfertReussi=Transfert réussi !
+msgProgrammeTermine=Programme terminé.
+
+msgNumRecep=Entrez le numéro bénéficiaire :
+msgMontant=Montant à transférer :
+
+
+msgTitrePaiementFacture = ------ PAIEMENT FACTURE ------
+msgFacture1 = 1 - Facture d'électricité
+msgFacture2 = 2 - Facture d'eau
+msgFacture3 = 3 - Facture internet
+msgInviteChoixFacture = Taper le numéro du service :
+typeFactureElec = facture d'électricité
+typeFactureEau = facture d'eau
+typeFactureInternet = facture internet
+msgRefFacture = Entrez la référence de la facture :
+msgMontantFacture = Entrez le montant de la facture :
+msgCodeSecret = Entrez votre code secret :
+msgChoixInvalide = Choix invalide.
+msgPaiementOK = Paiement effectué avec succès !
+msgNouveauSolde = Nouveau solde :
+msgCodeInvalide = Code invalide.
+

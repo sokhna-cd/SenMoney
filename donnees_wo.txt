@@ -1,0 +1,45 @@
+# --- Textes en Wolof ---
+
+titreAppli=Jëfandikoo SenMoney
+sousTitre=Tannal benn nimero te cuqal ci butoŋ bi ngir dugg ci SenMoney.
+btnMenu=#221#
+
+menuTitre=------ MENU SENMONEY ------
+menuLigne0=Dugalal nimero bi nga tànn
+menuLigne1=1. Xool sa solde
+menuLigne2=2. Yónnee xaalis
+menuLigne3=3. Fayal Facture bi
+menuLigne4=4. Tannef yi 
+menuInvite=Tannal nimero bu jëful ci sarwiisu bi :
+
+msgcodesecurite=Joxal sa kodu sécurité :
+msgSolde=Solde bu sa compte bi mooy :
+msgRetourMenu=Ndax bëgg nga dellu ci menu bi?
+
+errNumIntrouvable=Nimero bi kenn gisuko !
+errNumInvalide=Nimero bi du baax !
+errCodeIncorrect=Kodu bi baaxul !
+errMontantInvalide=Montant bi baaxul !
+errSoldeInsuffisant=Solde bi doyul !
+errOperationAnnulee=Jëf jooju neen na.
+
+msgTransfertReussi=Yónnee bi amna succès !
+msgProgrammeTermine=Jëf ji jeex na.
+
+msgNumRecep=Bindal nimero jëfandikukat bi :
+msgMontant=Montant bi nga bëgg yónnee :
+
+msgTitrePaiementFacture = ------ FAYYAL FAKTURU ------
+msgFacture1 = 1 - Fakturu elektrisite
+msgFacture2 = 2 - Fakturu ndox
+msgFacture3 = 3 - Fakturu internet
+msgInviteChoixFacture = Tànn nimero bi nga bëgg :
+
+msgRefFacture = Dugal référansu fakturu bi:
+msgMontantFacture = Dugal njaamu fakturu bi:
+msgCodeSecret = Dugal sa code biir SenMoney:
+msgChoixInvalide = Tànn bi baaxul.
+msgPaiementOK = Sàttal bi am na!
+msgNouveauSolde = Solde bu bees:
+msgCodeInvalide = Code bi baaxul.
+

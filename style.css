@@ -1,0 +1,74 @@
+/* === STYLE GLOBAL === */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+  height: 100vh;
+  display: flex;
+  flex-direction: column; /* empile verticalement */
+  align-items: center;
+  margin: 0;
+  padding-top: 40px; /* espace entre le haut et le titre */
+}
+
+/* === TITRE EN HAUT === */
+h2 {
+  color: #ff9800;
+  font-size: 32px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(255, 152, 0, 0.3);
+}
+
+/* === CONTENEUR DU FORMULAIRE === */
+form {
+  background-color: #ffffff;
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 320px;
+  transition: transform 0.3s ease;
+}
+
+form:hover {
+  transform: translateY(-5px);
+}
+
+/* === LISTE DÉROULANTE === */
+select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ff9800;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  background-color: #fffaf3;
+  transition: 0.3s ease;
+  color: #444;
+}
+
+select:hover {
+  border-color: #ffa726;
+  background-color: #fff3e0;
+}
+
+/* === BOUTON === */
+button {
+  margin-top: 25px;
+  padding: 12px 30px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
+}
+
+button:hover {
+  background-color: #fb8c00;
+  transform: translateY(-2px);
+}

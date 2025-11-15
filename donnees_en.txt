@@ -1,0 +1,47 @@
+# --- Textes en Anglais ---
+
+titreAppli=SenMoney Application
+sousTitre=Choose a number and press the button to start SenMoney.
+btnMenu=#221#
+
+menuTitre=------ SENMONEY MENU ------
+menuLigne0= Enter the number of the selected service
+menuLigne1=1. Check balance
+menuLigne2=2. Money transfer
+menuLigne3=3. Bill Paiement
+menuLigne4=4. Options
+menuInvite=Please enter the number of the chosen service:
+
+msgcodesecurite=Please enter your security code:
+msgSolde=Your account balance is:
+msgRetourMenu=Do you want to return to the menu?
+
+errNumIntrouvable=Number not found!
+errNumInvalide=Invalid number!
+errCodeIncorrect=Incorrect code!
+errMontantInvalide=Invalid amount!
+errSoldeInsuffisant=Insufficient balance!
+errOperationAnnulee=Operation cancelled.
+
+msgTransfertReussi=Transfer successful!
+msgProgrammeTermine=Program finished.
+
+msgNumRecep=Enter the recipient's number:
+msgMontant=Amount to transfer:
+
+msgTitrePaiementFacture = ------ BILL PAYMENT ------
+msgFacture1 = 1 - Electricity bill
+msgFacture2 = 2 - Water bill
+msgFacture3 = 3 - Internet bill
+msgInviteChoixFacture = Enter the service number:
+
+typeFactureElec = electricity bill
+typeFactureEau = water bill
+typeFactureInternet = internet bill
+msgRefFacture = Enter the bill reference:
+msgMontantFacture = Enter the bill amount:
+msgCodeSecret = Enter your SenMoney secret code:
+msgChoixInvalide = Invalid choice.
+msgPaiementOK = Payment successful!
+msgNouveauSolde = New balance:
+msgCodeInvalide = Invalid code.
