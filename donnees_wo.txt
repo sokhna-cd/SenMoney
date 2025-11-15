@@ -27,7 +27,7 @@ errSoldeInsuffisant=Solde bi doyul !
 errOperationAnnulee=Jëf jooju neen na.
 
 msgTransfertReussi=Yónnee bi amna succès !
-msgProgrammeTermine=Jëf ji jeex na.
+msgProgrammeTermine=Ba Bennen.
 
 msgNumRecep=Bindal nimero jëfandikukat bi :
 msgMontant=Montant bi nga bëgg yónnee :

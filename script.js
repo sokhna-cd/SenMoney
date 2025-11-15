@@ -78,7 +78,7 @@ function etapeSuivant() {
   if (rep) {
     main();
   } else {
-    let msgFin = textes["msgProgrammeTermine"] || "Programme terminé.";
+    let msgFin = textes["msgProgrammeTermine"] || "Au Revoir.";
     alert(msgFin);
   }
 }
@@ -116,8 +116,8 @@ function menu() {
     break;
   case "4":
     
-     optionsSenMoney ? optionsSenMoney() : alert("Options non implémentées");
-      break;
+    optionsSenMoney ? optionsSenMoney() : alert("Options non implémentées");
+    break;
     
   default:
     alert("Choix invalide.");
@@ -131,7 +131,7 @@ function menu() {
 
 function main() {
 
-    // a. Récupérer le numéro choisi dans le formulaire
+   
     numCourant = document.getElementById("num").value;
 
     // Si aucun numéro sélectionné

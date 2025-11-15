@@ -26,8 +26,7 @@ errSoldeInsuffisant=Insufficient balance!
 errOperationAnnulee=Operation cancelled.
 
 msgTransfertReussi=Transfer successful!
-msgProgrammeTermine=Program finished.
-
+msgProgrammeTermine=Bye!
 msgNumRecep=Enter the recipient's number:
 msgMontant=Amount to transfer:
 
