@@ -54,6 +54,8 @@ function majTextesPage() {
   if (textes["titreAppli"])  $("#titreAppli").text(textes["titreAppli"]);
   if (textes["sousTitre"])   $("#sousTitre").text(textes["sousTitre"]);
   if (textes["btnMenu"])     $("#btnMenu").text(textes["btnMenu"]);
+   if (textes["lang-block"])  $("#lblLang").text(textes["lang-block"]);
+  if (textes["formNum"])     $("#lblNum").text(textes["formNum"]);
 }
 
 $(document).ready(function() {

@@ -2,6 +2,9 @@
 
 titreAppli=Jëfandikoo SenMoney
 sousTitre=Tannal benn nimero te cuqal ci butoŋ bi ngir dugg ci SenMoney.
+lang-block = Tànn lën benn làkk
+formNum = Tànn lën benn numéro telefon
+
 btnMenu=#221#
 
 menuTitre=------ MENU SENMONEY ------

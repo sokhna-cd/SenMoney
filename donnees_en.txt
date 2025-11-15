@@ -1,6 +1,8 @@
 # --- Textes en Anglais ---
 
 titreAppli=SenMoney Application
+lang-block = Choose a language
+formNum = Choose a phone number
 sousTitre=Choose a number and press the button to start SenMoney.
 btnMenu=#221#
 
