@@ -14,9 +14,7 @@ let soldeCompte = 10000;
 let textes = {};
 
 
-/********************************
- *  PARTIE 2 – LANGUES (AJAX)
- ********************************/
+
 
 function chargerLangue(codeLangue) {
   let fichier = "donnees_" + codeLangue + ".txt";
@@ -131,25 +129,16 @@ function menu() {
 
 function main() {
 
-   
-    numCourant = document.getElementById("num").value;
-
-    // Si aucun numéro sélectionné
+   numCourant = document.getElementById("num").value;
     if (!numCourant) {
         alert("Veuillez sélectionner un numéro !");
         return;
     }
-
-    // b. Appeler menu() et récupérer la réponse
-    let rep = menu();
-
-    // c. Si rep = 1 → afficherSolde()
-    if (rep === "1") {
+let rep = menu();
+if (rep === "1") {
         afficherSolde();
     }
-
-    // d. Appeler etapeSuivant()
-    etapeSuivant();
+ etapeSuivant();
 }
 
 
@@ -185,9 +174,7 @@ function afficherSolde() {
     alert(msgSolde);
 }
 
- 
-
-   else {
+else {
     let msgErrCode = textes["errCodeIncorrect"] || "Code incorrect !";
     alert(msgErrCode);
   }
@@ -202,7 +189,7 @@ function transfertArgent() {
     return;
   }
 
-  // 🔹 1) Numéro bénéficiaire
+ 
   let msgNumRecep = textes["msgNumRecep"] || "Entrez le numéro bénéficiaire :";
   let recepteur = prompt(msgNumRecep);
 
@@ -220,7 +207,7 @@ function transfertArgent() {
 
   let rec = tabNumeros.indexOf(recepteur);
 
-  // 🔹 2) Montant
+  
   let msgMontant = textes["msgMontant"] || "Montant à transférer :";
   let montantStr = prompt(msgMontant);
 
@@ -245,7 +232,7 @@ function transfertArgent() {
     return;
   }
 
-  // 🔹 3) Vérification code de sécurité de l’expéditeur
+  
   let msgCode = textes["msgcodesecurite"] || "Entrez votre code de sécurité :";
   let code = prompt(msgCode);
 
@@ -261,7 +248,7 @@ function transfertArgent() {
     return;
   }
 
-  // 🔹 4) Effectuer le transfert
+
   tabSoldes[exp] -= (montant + frais);
   tabSoldes[rec] += montant;
 
@@ -270,7 +257,7 @@ function transfertArgent() {
 }
 function paiementFacture() {
 
-  // 1) Vérifier qu’un numéro est bien connecté
+  
   if (!numCourant) {
     alert("Aucun numéro sélectionné !");
     return;
@@ -282,7 +269,7 @@ function paiementFacture() {
     return;
   }
 
-  // 2) Message pour choisir le type de facture
+ 
   let msgChoixFacture =
   (textes["msgTitrePaiementFacture"] || "------ PAIEMENT FACTURE ------") + "\n" +
   (textes["msgFacture1"] || "1 - Facture d'électricité") + "\n" +
@@ -297,7 +284,7 @@ let choix = prompt(msgChoixFacture);
     return;
   }
 
-  // 3) Déterminer le libellé du type de facture
+  
   let typeFacture = "";
   switch (choix) {
     case "1":
@@ -314,7 +301,7 @@ let choix = prompt(msgChoixFacture);
       return;
   }
 
-  // 4) Saisie de la référence de facture
+
   let msgRefFacture = textes["msgRefFacture"] || "Entrez la référence de la facture :";
   let refFacture = prompt(msgRefFacture);
   if (!refFacture) {
@@ -322,7 +309,7 @@ let choix = prompt(msgChoixFacture);
     return;
   }
 
-  // 5) Saisie du montant
+
   let msgMontantFacture = textes["msgMontantFacture"] || "Entrez le montant de la facture :";
   let montant = parseInt(prompt(msgMontantFacture), 10);
   if (isNaN(montant) || montant <= 0) {
@@ -330,7 +317,7 @@ let choix = prompt(msgChoixFacture);
     return;
   }
 
-  // 6) Saisie du code secret
+ 
   let msgCodeSecret = textes["msgCodeSecret"] || "Entrez votre code secret SenMoney :";
   let codeSaisi = parseInt(prompt(msgCodeSecret), 10);
   if (isNaN(codeSaisi)) {
@@ -338,23 +325,23 @@ let choix = prompt(msgChoixFacture);
     return;
   }
 
-  // 7) Vérifier le code
+ 
   if (tabCodes[iSource] !== codeSaisi) {
     alert(textes["msgCodeIncorrect"] || "Code secret incorrect !");
     return;
   }
 
-  // 8) Vérifier le solde
+  
   if (tabSoldes[iSource] < montant) {
     alert(textes["msgSoldeInsuffisant"] || "Solde insuffisant pour payer cette facture !");
     return;
   }
 
-  // 9) Débiter le compte
+ 
   tabSoldes[iSource] -= montant;
 
-  // 10) Message de confirmation
-  let msgPaiementOK = textes["msgPaiementOK"] || "✅ Paiement effectué avec succès !";
+  
+  let msgPaiementOK = textes["msgPaiementOK"] || "Paiement effectué avec succès !";
   let msgNouveauSolde = textes["msgNouveauSolde"] || "Nouveau solde :";
 
   alert(
@@ -364,7 +351,7 @@ let choix = prompt(msgChoixFacture);
     msgNouveauSolde + " " + tabSoldes[iSource] + " F"
   );
 
-  // 11) Retour au menu (même style que pour le solde)
+  
   let msgRetourMenu = textes["msgRetourMenu"] || "Voulez-vous retourner au menu principal ?";
   let rep = confirm(msgRetourMenu);
   if (rep) {
